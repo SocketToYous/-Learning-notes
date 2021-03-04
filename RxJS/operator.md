@@ -1,0 +1,45 @@
+operator 
+
+创建操作符
+
+of   ->  一组参数依次返回observable
+
+from ->  数组、对象、promise、interator对象返回observable
+
+create -> 创建observable
+
+delay ->通过给定的超时或者直到一个给定的时间来延迟源 Observable 的发送。
+
+(delay:  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)
+
+通过给定的超时或者直到一个给定的时间来延迟源 Observable 的发送。
+
+empty -> 创建后完成 ，执行complete函数。 创建一个什么数据都不发出并且立马完成的 Observable。
+
+never ->  创建一个不向观察者发出任何项的 Observable 。
+
+创建操作符
+
+| 操作符           | 方法                                                         | 定义                                                         | 静态  |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----- |
+| of               | [ of](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-of)(values: ...T, scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)<T> | 创建一个 Observable，它会依次发出由你提供的参数，最后发出完成通知。 | true  |
+| from             | [ from](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-from)(ish: [ObservableInput](https://cn.rx.js.org/class/es6/MiscJSDoc.js~ObservableInputDoc.html)<T>, scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)<T> | 从一个数组、类数组对象、Promise、迭代器对象或者类 Observable 对象创建一个 Observable. | true  |
+| create           | [ create](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-create)(onSubscription: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(observer: [Observer](https://cn.rx.js.org/class/es6/MiscJSDoc.js~ObserverDoc.html)): [TeardownLogic](https://cn.rx.js.org/class/es6/MiscJSDoc.js~TeardownLogicDoc.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个新的 Observable ，当观察者( [Observer](https://cn.rx.js.org/class/es6/MiscJSDoc.js~ObserverDoc.html) )订阅该 Observable 时，它会执行指定的函数。 | true  |
+| defer            | [defer](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-defer)(observableFactory: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(): [SubscribableOrPromise](https://cn.rx.js.org/class/es6/MiscJSDoc.js~SubscribableOrPromiseDoc.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个 Observable，当被订阅的时候，调用 Observable 工厂为每个观察者创建新的 Observable。 | true  |
+| empty            | [empty](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-empty)(scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个什么数据都不发出并且立马完成的 Observable。          | true  |
+| fromEvent        | [fromEvent](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-fromEvent)(target: EventTargetLike, eventName: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), options: EventListenerOptions, selector: SelectorMethodSignature<T>): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)<T> | 创建一个 Observable，该 Observable 发出来自给定事件对象的指定类型事件。 | true  |
+| fromEventPattern | [fromEventPattern](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-fromEventPattern)(addHandler: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(handler: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)): any, removeHandler: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(handler: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), signal?: any): void, selector: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(...args: any): T): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)<T> | 从一个基于 addHandler/removeHandler 方法的API创建 Observable。 | true  |
+| fromPromise      | [ fromPromise](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-fromPromise)(promise: PromiseLike<T>, scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)<T> | 将 Promise 转化为 Observable。                               | true  |
+| generate         |                                                              |                                                              |       |
+| interval         | [interval](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-interval)(period: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个 Observable ，该 Observable 使用指定的 IScheduler ，并以指定时间间隔发出连续的数字。 | true  |
+| never            | [never](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-never)(): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个不向观察者发出任何项的 Observable 。                 | true  |
+| repeat           | [repeat](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#instance-method-repeat)(count: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 返回的 Observable 重复由源 Observable 所发出的项的流，最多可以重复 count 次。 | false |
+| repeatWhen       | [repeatWhen](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#instance-method-repeatWhen)(notifier: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(notifications: [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 返回的 Observalbe 是源 Observable 的镜像，除了 `complete` 。如果源 Observable 调用了 `complete`，这个方法会发出给 `notifier` 返回的 Observable 。如果这个 Observale 调用了 `complete` 或 `error`，那么这个方法会在子 subscription 上调用 `complete` 或 `error` 。否则，此方法将重新订阅源 Observable。 | false |
+| range            | [range](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-range)(start: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), count: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个 Observable ，它发出指定范围内的数字序列。           | true  |
+| throw            | [throw](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-throw)(将具体的: any, scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 创建一个不发送数据给观察者并且立马发出错误通知的 Observable。 |       |
+| timer            |                                                              | 创建一个 Observable，该 Observable 在初始延时（`initialDelay`）之后开始发送并且在每个时间周期（ `period`）后发出自增的数字。 | true  |
+| bindCallback     | [bindCallback](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-bindCallback)(func: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), selector: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)(...params: *): [Observable](https://cn.rx.js.org/class/es6/Observable.js~Observable.html) | 把回调API转化为返回Observable的函数。                        |       |
+| bindNodeCallback | [bindNodeCallback](https://cn.rx.js.org/class/es6/Observable.js~Observable.html#static-method-bindNodeCallback)(func: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), selector: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function), scheduler: [Scheduler](https://cn.rx.js.org/class/es6/Scheduler.js~Scheduler.html)): * | 把 Node.js 式回调API转换为返回 Observable 的函数。           | true  |
+
+转换操作符
+
